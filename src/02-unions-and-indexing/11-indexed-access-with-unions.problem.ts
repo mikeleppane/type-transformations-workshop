@@ -9,7 +9,10 @@ export const programModeEnumMap = {
   PLANNED_SELF_DIRECTED: "plannedSelfDirected",
 } as const;
 
-export type IndividualProgram = unknown;
+type ProgramModeEnumMapType = typeof programModeEnumMap
+
+//export type IndividualProgram = ProgramModeEnumMapType["ONE_ON_ONE" | "SELF_DIRECTED" | "PLANNED_ONE_ON_ONE" | "PLANNED_SELF_DIRECTED"];
+export type IndividualProgram = ProgramModeEnumMapType[Exclude<keyof ProgramModeEnumMapType, "GROUP" | "ANNOUNCEMENT">];
 
 type tests = [
   Expect<
